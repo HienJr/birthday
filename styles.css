@@ -1,0 +1,293 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  right: 0;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f2efed;
+}
+
+.cake {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  background: pink;
+  border-radius: 30px 30px 0 0;
+}
+
+.cream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 50px;
+  background: #fff;
+  border-radius: 30px 30px 0 0;
+}
+
+.cake__decor {
+  position: absolute;
+  background-color: #fff;
+  top: 25px;
+  border-radius: 999px;
+  width: 10px;
+}
+
+.decor-1 {
+  left: 0;
+  height: 120px;
+}
+.decor-2 {
+  left: 60px;
+  height: 100px;
+}
+.decor-3 {
+  left: 120px;
+  height: 140px;
+}
+.decor-4 {
+  left: 180px;
+  height: 115px;
+}
+.decor-5 {
+  left: 230px;
+  height: 125px;
+}
+.decor-6 {
+  left: 290px;
+  height: 100px;
+}
+
+.decor-circle-1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 25px;
+  left: 10px;
+  background: pink;
+}
+
+.decor-circle-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 28px;
+  left: 70px;
+  background: pink;
+}
+
+.decor-circle-3 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 22px;
+  left: 130px;
+  background: pink;
+}
+
+.decor-circle-4 {
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  top: 28px;
+  left: 190px;
+  background: pink;
+}
+
+.decor-circle-5 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 22px;
+  left: 240px;
+  background: pink;
+}
+
+.decor-circle-6 {
+  width: 20px;
+  height: 50px;
+  border-radius: 50%;
+  top: 28px;
+  left: 300px;
+  background: pink;
+}
+
+.seed-decor {
+  position: absolute;
+  width: 12px;
+  height: 2px;
+}
+
+.seed-decor-1 {
+  background: blue;
+  top: 120px;
+  left: 30px;
+  rotate: 45deg;
+}
+
+.seed-decor-2 {
+  background: yellow;
+  top: 160px;
+  left: 50px;
+  rotate: 245deg;
+}
+.seed-decor-3 {
+  background: green;
+  top: 160px;
+  left: 140px;
+  rotate: 145deg;
+}
+.seed-decor-4 {
+  background: orange;
+  top: 160px;
+  left: 30px;
+  rotate: 95deg;
+}
+.seed-decor-5 {
+  background: chocolate;
+  top: 160px;
+  left: 230px;
+  rotate: 15deg;
+}
+.seed-decor-6 {
+  background: red;
+  top: 100px;
+  left: 135px;
+  rotate: 75deg;
+}
+.seed-decor-7 {
+  background: blue;
+  top: 50px;
+  left: 80px;
+  rotate: 45deg;
+}
+
+.seed-decor-8 {
+  background: yellow;
+  top: 60px;
+  left: 150px;
+  rotate: 245deg;
+}
+.seed-decor-9 {
+  background: green;
+  top: 60px;
+  left: 200px;
+  rotate: 145deg;
+}
+.seed-decor-10 {
+  background: orange;
+  top: 70px;
+  left: 250px;
+  rotate: 95deg;
+}
+.seed-decor-11 {
+  background: chocolate;
+  top: 120px;
+  left: 250px;
+  rotate: 15deg;
+}
+.seed-decor-6 {
+  background: red;
+  top: 180px;
+  left: 285px;
+  rotate: 75deg;
+}
+
+.candle {
+  position: absolute;
+  top: -50px;
+  left: 30px;
+  width: 15px;
+  height: 50px;
+  border-radius: 2px 2px 0 0;
+  
+  background: #9b2a84;
+background: linear-gradient(90deg, rgba(155, 42, 132, 1) 0%, rgba(199, 87, 141, 1) 50%, rgba(237, 83, 83, 1) 100%);
+}
+
+.candle-1 {
+  left: 60px;
+}
+.candle-2 {
+  left: 90px;
+}
+.candle-3 {
+  left: 120px;
+}
+.candle-4 {
+  left: 150px;
+}
+.candle-5 {
+  left: 180px;
+}
+.candle-6 {
+  left: 210px;
+}
+.candle-7 {
+  left: 240px;
+}
+.candle-8 {
+  left: 270px;
+}
+
+.wick {
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  background: #000;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flame {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 10px;
+  background: linear-gradient(white 20%, #ff9224 10%, #ff6a00);
+  border-radius: 50% 50% 20% 20%;
+  filter: blur(2px);
+
+  animation: flicker 0.1s infinite alternate, sway 3s ease-in-out infinite;
+}
+
+.flame::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(#ff6a00 10%, transparent 70%);
+  border-radius: 50%;
+  top: -3px;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.6;
+    height: 12px;
+  }
+  100% {
+    opacity: 1;
+    height: 8px;
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+}
