@@ -5,8 +5,10 @@
 }
 
 body {
-  overflow-y: hidden;
+  overflow: hidden;
+  font-family: "Dancing Script", cursive;
 }
+/* common */
 
 .container {
   position: relative;
@@ -18,142 +20,121 @@ body {
   width: 100%;
 }
 
-.cake {
-  position: relative;
-  width: 320px;
-  height: 200px;
-  background: pink;
-  border-radius: 30px 30px 0 0;
-}
-
-.cake::before {
-  content: "Happy Birthday Tham";
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  font-family: "Dancing Script", cursive;
-  font-size: 35px;
-  font-weight: 800;
-  bottom: 0;
-  z-index: 3;
-}
-
-.cream {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 50px;
-  background: #e29191;
-  border-radius: 30px 30px 0 0;
-}
-
-.candle {
-  position: absolute;
-  top: -50px;
-  width: 15px;
-  height: 50px;
-  border-radius: 2px 2px 0 0;
-  background: pink;
-}
-
-.candle-1 {
-  left: 60px;
-}
-.candle-2 {
-  left: 90px;
-}
-.candle-3 {
-  left: 120px;
-}
-.candle-4 {
-  left: 150px;
-}
-.candle-5 {
-  left: 180px;
-}
-.candle-6 {
-  left: 210px;
-}
-.candle-7 {
-  left: 240px;
-}
-.candle-8 {
-  left: 270px;
-}
-.candle-9 {
-  left: 30px;
-}
-
-.wick {
-  position: absolute;
-  width: 1px;
-  height: 8px;
-  background: #000;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.flame {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 10px;
-  /* background: linear-gradient(white 20%, #ff9224 10%, #ff6a00); */
-  background: red;
-  border-radius: 50% 50% 20% 20%;
-  filter: blur(2px);
-
-  animation: flicker 0.1s infinite alternate, sway 3s ease-in-out infinite;
-}
-
-.flame::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* background: radial-gradient(#ff6a00 10%, transparent 70%); */
-  background: red;
-  border-radius: 50%;
-  top: -3px;
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 0.6;
-    height: 12px;
-  }
-  100% {
-    opacity: 1;
-    height: 8px;
-  }
-}
-
-@keyframes sway {
-  0%,
-  100% {
-    transform: translateX(-50%) rotate(3deg);
-  }
-  50% {
-    transform: translateX(-50%) rotate(-3deg);
-  }
-}
-
-.action {
-  margin-top: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  column-gap: 50px;
-}
-
-.button {
+.btn {
   width: 150px;
   height: 50px;
   border-radius: 999px;
   outline: none;
   border: none;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background: #ccc;
+  transition: opacity 0.3s;
+}
+
+.banner {
+  text-align: center;
+}
+
+.title {
+  font-size: 50px;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+.play-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.load-wrapper {
+  right: -90px;
+  transform: translateX(0);
+  animation: load 5s 1 linear;
+}
+
+.load-wrapper,
+.load-icon,
+.heart {
+  position: absolute;
+}
+
+.load-icon {
+  width: 80px;
+  height: 80px;
+}
+
+@keyframes load {
+  0% {
+    right: -90px;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+.heart {
+  top: 50px;
+  width: 20px;
+  height: 20px;
+  animation: heart 2s infinite linear;
+}
+
+.hear-1 {
+  left: 0;
+}
+.hear-2 {
+  left: 30px;
+  animation-delay: 0.3s;
+}
+.hear-3 {
+  left: 60px;
+  animation-delay: 0.6s;
+}
+.hear-4 {
+  left: 90px;
+  animation-delay: 0.9s;
+}
+.hear-5 {
+  left: 120px;
+  animation-delay: 1.2s;
+}
+.hear-6 {
+  left: 150px;
+  animation-delay: 1.5s;
+}
+
+@keyframes heart {
+  0% {
+    scale: 1;
+    top: 0;
+  }
+  50% {
+    scale: 1.1;
+    top: 50px;
+  }
+  100% {
+    scale: 1.2;
+    top: 0;
+  }
+}
+
+.task,
+.date {
+  font-size: 22px;
+}
+
+.date {
+  padding: 5px;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+}
+
+canvas {
+  position: absolute;
+  z-index: 5;
 }
