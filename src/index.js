@@ -24,7 +24,7 @@ playBtn.onclick = function () {
   });
 };
 
-checkBtn.addEventListener("click", () => {
+checkBtn.onclick = () => {
   const day = document.querySelector(".date");
   const date = new Date();
   const toDay =
@@ -34,7 +34,7 @@ checkBtn.addEventListener("click", () => {
     "-" +
     date.getDate();
 
-  if (toDay === toDay) {
+  if (day.value === toDay) {
     alert("Hãy thổi vào cổng sạc để tắt nến!!!");
     const audio = document.querySelector("#audio");
     audio.play();
@@ -74,4 +74,4 @@ checkBtn.addEventListener("click", () => {
       text: "Nhập lại đi ",
     });
   }
-});
+};
