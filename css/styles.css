@@ -51,7 +51,8 @@ body {
 }
 
 .load-wrapper {
-  right: -90px;
+  /* right: -90px; */
+  right: -100%;
   transform: translateX(0);
   animation: load 5s 1 linear;
 }
