@@ -24,7 +24,7 @@ playBtn.onclick = function () {
   });
 };
 
-checkBtn.onclick = () => {
+checkBtn.onclick = function () {
   const day = document.querySelector(".date");
   const date = new Date();
   const toDay =
@@ -75,3 +75,4 @@ checkBtn.onclick = () => {
     });
   }
 };
+
