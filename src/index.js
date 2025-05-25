@@ -9,10 +9,6 @@ const loadIcon = document.querySelector(".load-wrapper");
 const question = document.querySelector(".question");
 const cake = document.querySelector(".cake");
 
-document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
-});
-
 playBtn.onclick = function () {
   banner.hidden = true;
   loadIcon.hidden = false;
@@ -39,7 +35,6 @@ checkBtn.onclick = function () {
     date.getDate();
   if (day.value === toDay) {
     alert("Hãy thổi vào cổng sạc để tắt nến!!!");
-
 
     const audio = document.querySelector("#audio");
     audio.play();
