@@ -8,7 +8,7 @@ const wick = document.querySelectorAll(".wick");
 const flame = document.querySelectorAll(".flame");
 
 async function startMic() {
-//   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const source = audioContext.createMediaStreamSource(stream);
   const analyser = audioContext.createAnalyser();

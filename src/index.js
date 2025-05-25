@@ -30,20 +30,19 @@ checkBtn.onclick = function () {
   const toDay =
     date.getFullYear() +
     "-" +
-    (date.getDay() > 10 ? date.getDay() : "0" + date.getDay()) +
+    String(date.getMonth() + 1).padStart(2, "0") +
     "-" +
     date.getDate();
-
   if (day.value === toDay) {
     alert("Hãy thổi vào cổng sạc để tắt nến!!!");
+
+
     const audio = document.querySelector("#audio");
     audio.play();
 
     document.body.style.transition = "background 3s";
     document.body.style.background = "#000";
     question.hidden = true;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
     for (let i = 0; i < 10; i++) {
       shootConfetti(0, canvas.height);
       shootConfetti(canvas.width, canvas.height);
@@ -75,4 +74,3 @@ checkBtn.onclick = function () {
     });
   }
 };
-

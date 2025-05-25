@@ -8,6 +8,13 @@ body {
   overflow: hidden;
   font-family: "Dancing Script", cursive;
 }
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
 /* common */
 
 .container {
@@ -54,7 +61,7 @@ body {
   /* right: -90px; */
   right: -100%;
   transform: translateX(0);
-  animation: load 5s 1 linear;
+  animation: load 1s 1 linear;
 }
 
 .load-wrapper,
@@ -137,5 +144,7 @@ body {
 
 canvas {
   position: absolute;
-  z-index: 5;
+  z-index: -5;
+  /* width: 0;
+  height: 0; */
 }

@@ -51,6 +51,9 @@ export default function shootConfetti(x, y) {
 }
 
 function animate() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
   // Xoá toàn bộ khung hình trước đó
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
