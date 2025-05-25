@@ -8,6 +8,13 @@ body {
   overflow: hidden;
   font-family: "Dancing Script", cursive;
 }
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
 /* common */
 
 .container {
