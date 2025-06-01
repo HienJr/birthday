@@ -1,24 +1,8 @@
-<!-- <!DOCTYPE html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chữ rơi 3D</title>
-    <link rel="stylesheet" href="test.css" />
-  </head>
-  <body>
-    <div class="scene">
-      <div class="camera" id="camera"></div>
-    </div>
-    <script src="test.js"></script>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Chữ rơi 3D</title>
+    <title>Chữ rơi 3D - Nổ tung</title>
     <style>
       body {
         margin: 0;
@@ -40,7 +24,7 @@
       }
       .text {
         position: absolute;
-        color: rgb(14, 122, 194);
+        color: white;
         font-size: 24px;
         font-weight: bold;
         white-space: nowrap;
@@ -48,7 +32,6 @@
         text-shadow: 1px 1px 2px #000;
         pointer-events: none;
         will-change: transform, opacity;
-        transition: opacity 0.2s linear;
       }
     </style>
   </head>
@@ -73,7 +56,6 @@
       const layerCount = 4;
       const layerSpacing = 300;
       const padding = 20;
-
       const usedPositionsByLayer = Array.from({ length: layerCount }, () => []);
 
       function getTextWidth(textContent) {
@@ -107,6 +89,42 @@
         return null;
       }
 
+      function explodeText(textEl, x, y, z) {
+        const textContent = textEl.textContent;
+        for (let i = 0; i < textContent.length; i++) {
+          const span = document.createElement("span");
+          span.textContent = textContent[i];
+          span.className = "text";
+          camera.appendChild(span);
+
+          let dx = (Math.random() - 0.5) * 100;
+          let dy = (Math.random() - 0.5) * 100 - 50;
+          let dz = (Math.random() - 0.5) * 200;
+          let opacity = 1;
+
+          function animateFragment() {
+            dx *= 0.98;
+            dy += 1; // gravity
+            dz *= 0.98;
+            x += dx * 0.1;
+            y += dy * 0.1;
+            z += dz * 0.1;
+            opacity -= 0.02;
+
+            span.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
+            span.style.opacity = opacity.toFixed(2);
+
+            if (opacity > 0) {
+              requestAnimationFrame(animateFragment);
+            } else {
+              span.remove();
+            }
+          }
+
+          animateFragment();
+        }
+      }
+
       function createFallingText() {
         const content = data[Math.floor(Math.random() * data.length)];
         const text = document.createElement("div");
@@ -124,8 +142,11 @@
         }
 
         let y = -30;
+        let velocity = 2 + layer * 0.5;
+
         function animate() {
-          y += 2 + layer * 0.5;
+          y += velocity;
+
           const depthFade = 1 - layer / layerCount;
           const bottomFade = 1 - Math.max(0, (y - sceneHeight + 100) / 100);
           const opacity = Math.max(0, Math.min(1, depthFade * bottomFade));
@@ -133,11 +154,13 @@
           text.style.opacity = opacity.toFixed(2);
           text.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
 
-          if (y < sceneHeight + 100 && opacity > 0) {
-            requestAnimationFrame(animate);
-          } else {
+          if (y >= sceneHeight - 40) {
+            explodeText(text, x, y, z);
             text.remove();
+            return;
           }
+
+          requestAnimationFrame(animate);
         }
 
         animate();

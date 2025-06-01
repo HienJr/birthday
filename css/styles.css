@@ -152,14 +152,6 @@ canvas {
   z-index: -5;
 }
 
-/* .scene {
-  position: relative;
-  width: inherit;
-  height: inherit;
-  perspective: 1000px;
-  background: radial-gradient(#111, #000);
-} */
-
 .drop-text {
   position: absolute;
   white-space: nowrap;

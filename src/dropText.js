@@ -1,9 +1,11 @@
 const scene = document.querySelector(".container");
 const data = [
+  "09/10/2001",
   "Chúc mừng sinh nhật",
   "❤️",
-  "LOVE YOU",
-  "Tuyệt vời",
+  "Love You",
+  "Lê Thị Kim Tốt",
+  "Tiffany",
   "Vui vẻ",
   "Hạnh phúc",
   "Nhiều tiền",
@@ -17,17 +19,16 @@ const depthLayers = [
 ];
 
 const usedPositions = [];
+const screenWidth = screen.width;
 
 function getRandomPosition(maxWidth, textWidth) {
   let maxAttempts = 50;
   let attempt = 0;
-  const padding = 50;
+  const padding = screenWidth > 1024 ? 80 : 30;
 
   while (attempt < maxAttempts) {
     const x = Math.floor(Math.random() * (maxWidth - textWidth));
-    let overLap = usedPositions.some(
-      (pos) => Math.abs(pos - x) <  padding
-    );
+    let overLap = usedPositions.some((pos) => Math.abs(pos - x) < padding);
 
     if (!overLap) {
       usedPositions.push(x);
@@ -45,7 +46,8 @@ function createDropText(text) {
 
   const layer = depthLayers[Math.floor(Math.random() * depthLayers.length)];
   p.style.color = "white";
-  p.style.fontSize = `${24 * layer.scale}px`;
+  p.style.fontSize =
+    screenWidth > 1024 ? `${24 * layer.scale}px` : `${16 * layer.scale}px`;
   p.style.animationDuration = `${layer.speed}s`;
   p.style.opacity = layer.opacity;
   p.style.zIndex = layer.zIndex;
@@ -75,7 +77,45 @@ function startDropText() {
     // console.log(text);
 
     createDropText(text);
-  }, 5);
+  });
 }
 
 export default startDropText;
+
+function explodeText(textEl, x, y, z) {
+  const textContent = textEl.textContent;
+  for (let i = 0; i < textContent.length; i++) {
+    const span = document.createElement("span");
+    span.textContent = textContent[i];
+    span.className = "text";
+    camera.appendChild(span);
+
+    let dx = (Math.random() - 0.5) * 100;
+    let dy = (Math.random() - 0.5) * 100 - 50;
+    let dz = (Math.random() - 0.5) * 200;
+
+    let opacity = 1;
+    let frame = 0;
+
+    function animateFragment() {
+      dx *= 0.98;
+      dy += 1; // gravity
+      dz *= 0.98;
+      x += dx * 0.1;
+      y += dy * 0.1;
+      z += dz * 0.1;
+      opacity -= 0.02;
+
+      span.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
+      span.style.opacity = opacity.toFixed(2);
+
+      if (opacity > 0) {
+        requestAnimationFrame(animateFragment);
+      } else {
+        span.remove();
+      }
+    }
+
+    animateFragment();
+  }
+}
