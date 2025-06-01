@@ -31,8 +31,8 @@ async function startMic() {
       });
       flame.forEach((item) => (item.hidden = true));
 
-      body.style.transition = "background 3.5s";
-      body.style.background = "#fff";
+      // body.style.transition = "background 3.5s";
+      // body.style.background = "#fff";
 
       for (let i = 0; i < 15; i++) {
         shootConfetti(0, 0);

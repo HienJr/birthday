@@ -1,7 +1,9 @@
 import shootConfetti from "./shootConfetti.js";
 import detectBlow from "./detectBlow.js";
+import dropText from "./dropText.js";
 
 const checkBtn = document.querySelector(".check");
+// dropText();
 
 const playBtn = document.querySelector("#playBtn");
 const banner = document.querySelector(".banner");
@@ -11,12 +13,13 @@ const cake = document.querySelector(".cake");
 
 playBtn.onclick = function () {
   banner.hidden = true;
-  loadIcon.hidden = false;
+  // loadIcon.hidden = false;
 
-  loadIcon.addEventListener("animationend", function (e) {
-    e.preventDefault();
-    question.hidden = false;
-  });
+  // loadIcon.addEventListener("animationend", function (e) {
+  //   e.preventDefault();
+  //   question.hidden = false;
+  // });
+  question.hidden = false;
 
   window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
@@ -32,15 +35,18 @@ checkBtn.onclick = function () {
     "-" +
     String(date.getMonth() + 1).padStart(2, "0") +
     "-" +
-    date.getDate();
+    String(date.getDay() + 1).padStart(2, "0");
+
   if (day.value === toDay) {
+    dropText();
+
     alert("Hãy thổi vào cổng sạc để tắt nến!!!");
 
     const audio = document.querySelector("#audio");
     audio.play();
 
-    document.body.style.transition = "background 3s";
-    document.body.style.background = "#000";
+    // document.body.style.transition = "background 3s";
+    // document.body.style.background = "#000";
     question.hidden = true;
     for (let i = 0; i < 10; i++) {
       shootConfetti(0, canvas.height);
