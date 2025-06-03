@@ -1,5 +1,6 @@
 import shootConfetti from "./shootConfetti.js";
 import detectBlow from "./detectBlow.js";
+import dropText from "./dropText.js";
 
 const checkBtn = document.querySelector(".check");
 // dropText();
@@ -52,6 +53,7 @@ checkBtn.onclick = function () {
 
     cake.hidden = false;
 
+
     // Bắn tự động
     // setInterval(() => {
     //   shootConfetti(0, canvas.height);
@@ -76,3 +78,4 @@ checkBtn.onclick = function () {
     });
   }
 };
+

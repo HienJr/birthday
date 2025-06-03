@@ -176,3 +176,28 @@ canvas {
     opacity: 0;
   }
 }
+
+.star-background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: #fff;
+  animation: twinkle 0.8s infinite;
+  opacity: 0.6;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -8,8 +8,6 @@ const data = [
   "Tiffany",
   "Vui vẻ",
   "Hạnh phúc",
-  "Nhiều tiền",
-  "May mắn",
 ];
 
 const depthLayers = [
@@ -20,6 +18,7 @@ const depthLayers = [
 
 const usedPositions = [];
 const screenWidth = screen.width;
+const screenHeight = screen.height;
 
 function getRandomPosition(maxWidth, textWidth) {
   let maxAttempts = 50;
@@ -78,6 +77,10 @@ function startDropText() {
 
     createDropText(text);
   });
+  for (let i = 0; i < starCount; i++) {
+    const start = createStar();
+    bg.appendChild(start);
+  }
 }
 
 export default startDropText;
@@ -92,4 +95,23 @@ if (window.DeviceOrientationEvent) {
 
     container.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
   });
+}
+
+// Star background
+const starCount = 80;
+const bg = document.querySelector(".star-background");
+
+function createStar() {
+  const start = document.createElement("div");
+  start.className = "star";
+
+  start.style.width = `${Math.floor(Math.random() * 3) + 1}px`;
+  start.style.height = `${Math.floor(Math.random() * 3) + 1}px`;
+
+  start.style.left = `${Math.random() * screenWidth}px`;
+  start.style.top = `${Math.random() * screenHeight}px`;
+
+  start.style.animationDelay = `${Math.random() * 3}s`;
+
+  return start;
 }
