@@ -1,9 +1,8 @@
 import shootConfetti from "./shootConfetti.js";
 import detectBlow from "./detectBlow.js";
-import dropText from "./dropText.js";
 
 const checkBtn = document.querySelector(".check");
-dropText();
+// dropText();
 
 const playBtn = document.querySelector("#playBtn");
 const banner = document.querySelector(".banner");
@@ -38,8 +37,6 @@ checkBtn.onclick = function () {
     String(date.getDay() + 1).padStart(2, "0");
 
   if (day.value === toDay) {
-    // dropText();
-
     alert("Hãy thổi vào cổng sạc để tắt nến!!!");
 
     const audio = document.querySelector("#audio");

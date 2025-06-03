@@ -1,3 +1,4 @@
+import dropText from "./dropText.js";
 import shootConfetti from "./shootConfetti.js";
 import stream from "./allowMic.js";
 
@@ -24,7 +25,7 @@ async function startMic() {
     analyser.getByteFrequencyData(dataArray);
 
     const average = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
-    const threshold = 15;
+    const threshold = 45;
     if (average > threshold) {
       wick.forEach((item, index) => {
         item.hidden = true;
@@ -46,6 +47,7 @@ async function startMic() {
 
       cake.style.transition = "transform 3s";
       cake.style.transform = "translateY(999px)";
+      dropText();
 
       stopMic = true;
     }

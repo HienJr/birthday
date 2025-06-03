@@ -1,4 +1,4 @@
-const scene = document.querySelector(".container");
+const container = document.querySelector(".container");
 const data = [
   "09/10/2001",
   "Chúc mừng sinh nhật",
@@ -52,7 +52,7 @@ function createDropText(text) {
   p.style.opacity = layer.opacity;
   p.style.zIndex = layer.zIndex;
 
-  scene.appendChild(p);
+  container.appendChild(p);
 
   const x = getRandomPosition(window.innerWidth, p.offsetWidth);
 
@@ -82,40 +82,14 @@ function startDropText() {
 
 export default startDropText;
 
-function explodeText(textEl, x, y, z) {
-  const textContent = textEl.textContent;
-  for (let i = 0; i < textContent.length; i++) {
-    const span = document.createElement("span");
-    span.textContent = textContent[i];
-    span.className = "text";
-    camera.appendChild(span);
+if (window.DeviceOrientationEvent) {
+  window.addEventListener("deviceorientation", (e) => {
+    const beta = e.beta;
+    const gama = e.gamma;
 
-    let dx = (Math.random() - 0.5) * 100;
-    let dy = (Math.random() - 0.5) * 100 - 50;
-    let dz = (Math.random() - 0.5) * 200;
+    const angleX = Math.max(-60, Math.min(60, beta - 30));
+    const angleY = Math.max(-90, Math.min(90, gama));
 
-    let opacity = 1;
-    let frame = 0;
-
-    function animateFragment() {
-      dx *= 0.98;
-      dy += 1; // gravity
-      dz *= 0.98;
-      x += dx * 0.1;
-      y += dy * 0.1;
-      z += dz * 0.1;
-      opacity -= 0.02;
-
-      span.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
-      span.style.opacity = opacity.toFixed(2);
-
-      if (opacity > 0) {
-        requestAnimationFrame(animateFragment);
-      } else {
-        span.remove();
-      }
-    }
-
-    animateFragment();
-  }
+    container.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+  });
 }
