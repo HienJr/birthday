@@ -189,13 +189,13 @@ canvas {
   border-radius: 50%;
   pointer-events: none;
   background: #fff;
-  animation: twinkle 0.8s infinite;
-  opacity: 0.6;
+  animation: twinkle 0.9s infinite;
+  opacity: 0.5;
 }
 
 @keyframes twinkle {
   0% {
-    opacity: 0.6;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;

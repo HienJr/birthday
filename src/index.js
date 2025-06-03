@@ -53,7 +53,6 @@ checkBtn.onclick = function () {
 
     cake.hidden = false;
 
-
     // Bắn tự động
     // setInterval(() => {
     //   shootConfetti(0, canvas.height);
@@ -78,4 +77,3 @@ checkBtn.onclick = function () {
     });
   }
 };
-

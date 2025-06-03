@@ -1,4 +1,5 @@
 const container = document.querySelector(".container");
+
 const data = [
   "09/10/2001",
   "Chúc mừng sinh nhật",
@@ -23,7 +24,7 @@ const screenHeight = screen.height;
 function getRandomPosition(maxWidth, textWidth) {
   let maxAttempts = 50;
   let attempt = 0;
-  const padding = screenWidth > 1024 ? 80 : 30;
+  const padding = screenWidth > 1025 ? 80 : 30;
 
   while (attempt < maxAttempts) {
     const x = Math.floor(Math.random() * (maxWidth - textWidth));
@@ -70,35 +71,7 @@ function createDropText(text) {
 
 const dataLength = data.length;
 
-function startDropText() {
-  setInterval(() => {
-    const text = data[Math.floor(Math.random() * dataLength)];
-    // console.log(text);
-
-    createDropText(text);
-  });
-  for (let i = 0; i < starCount; i++) {
-    const start = createStar();
-    bg.appendChild(start);
-  }
-}
-
-export default startDropText;
-
-if (window.DeviceOrientationEvent) {
-  window.addEventListener("deviceorientation", (e) => {
-    const beta = e.beta;
-    const gama = e.gamma;
-
-    const angleX = Math.max(-60, Math.min(60, beta - 30));
-    const angleY = Math.max(-90, Math.min(90, gama));
-
-    container.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-  });
-}
-
 // Star background
-const starCount = 80;
 const bg = document.querySelector(".star-background");
 
 function createStar() {
@@ -111,7 +84,31 @@ function createStar() {
   start.style.left = `${Math.random() * screenWidth}px`;
   start.style.top = `${Math.random() * screenHeight}px`;
 
-  start.style.animationDelay = `${Math.random() * 3}s`;
+  start.style.animationDelay = `${Math.random() * 5}s`;
 
   return start;
+}
+function startDropText() {
+  setInterval(() => {
+    const text = data[Math.floor(Math.random() * dataLength)];
+    createDropText(text);
+  });
+  for (let i = 0; i < 240; i++) {
+    const start = createStar();
+    bg.appendChild(start);
+  }
+}
+
+export default startDropText;
+
+if (screenWidth < 1025 && window.DeviceOrientationEvent) {
+  window.addEventListener("deviceorientation", (e) => {
+    const beta = e.beta;
+    const gama = e.gamma;
+
+    const angleX = Math.max(-60, Math.min(60, beta - 30));
+    const angleY = Math.max(-90, Math.min(90, gama));
+
+    container.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+  });
 }
