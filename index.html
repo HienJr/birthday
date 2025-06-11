@@ -16,7 +16,7 @@
     />
     <!-- Css -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/decor.css" />
+    <link rel="stylesheet" href="./css/cake-decor.css" />
     <link rel="stylesheet" href="./css/cake-styles.css" />
     <link rel="stylesheet" href="./css/leter.css" />
   </head>
@@ -24,6 +24,7 @@
     <audio
       id="audio"
       src="./audio/Khúc Hát Mừng Sinh Nhật [Remix] - Phan Đinh Tùng.mp3"
+      loop
     ></audio>
     <main class="main">
       <div class="container">
@@ -34,7 +35,7 @@
           </button>
         </div>
         <div class="load-wrapper" hidden>
-          <!-- <img class="load-icon" src="./img/image_no_bg.png" alt="load" /> -->
+          <!-- <img class="load-icon" src="./img/img_no_bg.png" alt="load" /> -->
           <img class="load-icon" src="./img/jYGPfR01.svg" alt="load" />
           <img class="heart hear-1" src="./icon/heart-red.svg" alt="" />
           <img class="heart hear-2" src="./icon/heart-red.svg" alt="" />
@@ -48,7 +49,16 @@
           <input type="date" name="" class="date" value="2001-10-09" />
           <button class="check btn">Check</button>
         </div>
-        <div class="firework"></div>
+        <div class="image" hidden>
+          <img src="./img/IMG_1006.JPG" alt="img" class="img" />
+          <img src="./img/IMG_3211.JPG" alt="img" class="img" />
+          <img src="./img/IMG_3241.JPG" alt="img" class="img" />
+          <img src="./img/IMG_4149.JPG" alt="img" class="img" />
+          <img src="./img/IMG_4550.JPG" alt="img" class="img" />
+          <img src="./img/IMG_4727.JPG" alt="img" class="img" />
+          <img src="./img/IMG_5234.JPG" alt="img" class="img" />
+          <img src="./img/IMG_5300.JPG" alt="img" class="img" />
+        </div>
         <div class="cake" hidden>
           <div class="cream"></div>
           <div class="cake__decor decor-1"></div>
@@ -75,47 +85,80 @@
           <div class="seed-decor seed-decor-10"></div>
           <div class="seed-decor seed-decor-11"></div>
           <div class="seed-decor seed-decor-12"></div>
+          <div class="candle candle-0">
+            H
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
           <div class="candle candle-1">
+            A
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-2">
+            P
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-3">
+            P
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-4">
+            Y
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-5">
+            B
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-6">
+            I
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-7">
+            R
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-8">
+            T
             <div class="wick">
               <div class="flame"></div>
             </div>
           </div>
           <div class="candle candle-9">
+            H
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-10">
+            D
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-11">
+            A
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-12">
+            Y
             <div class="wick">
               <div class="flame"></div>
             </div>
@@ -127,7 +170,6 @@
     </main>
     <!-- sweetalert2 -->
 
-    <!-- <script src="./main.js"></script> -->
     <script type="module" src="./src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>

@@ -9,6 +9,8 @@ const data = [
   "Tiffany",
   "Vui vẻ",
   "Hạnh phúc",
+  "Happy Birthday 🎂",
+  "😘",
 ];
 
 const depthLayers = [

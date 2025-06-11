@@ -7,6 +7,7 @@ const body = document.body;
 const candle = document.querySelectorAll(".candle");
 const wick = document.querySelectorAll(".wick");
 const flame = document.querySelectorAll(".flame");
+const image = document.querySelector(".image");
 
 async function startMic() {
   // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -32,12 +33,11 @@ async function startMic() {
       });
       flame.forEach((item) => (item.hidden = true));
 
-      // body.style.transition = "background 3.5s";
-      // body.style.background = "#fff";
-
       for (let i = 0; i < 15; i++) {
         shootConfetti(0, 0);
         shootConfetti(canvas.width, 0);
+        shootConfetti(0, canvas.height);
+        shootConfetti(canvas.width, canvas.height);
       }
 
       candle.forEach((item) => {
@@ -45,9 +45,12 @@ async function startMic() {
         item.style.transition = "opacity 3s";
       });
 
-      cake.style.transition = "transform 3s";
-      cake.style.transform = "translateY(999px)";
-      dropText();
+      setTimeout(() => {
+        image.style.display = "none";
+        cake.style.transition = "transform 3s";
+        cake.style.transform = "translateY(999px)";
+        dropText();
+      }, 3000);
 
       stopMic = true;
     }

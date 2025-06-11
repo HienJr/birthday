@@ -29,59 +29,83 @@
 
 .candle {
   position: absolute;
-  top: -50px;
+  top: -35px;
+  font-size: 32px;
+  font-weight: 900;
   width: 15px;
   height: 50px;
-  border-radius: 2px 2px 0 0;
-  background: pink;
+  /* border-radius: 2px 2px 0 0; */
+  /* background: pink; */
+  color: #ffffff;
 }
 
+.candle-0 {
+  left: 20px;
+  color: rgb(123, 152, 204);
+}
 .candle-1 {
-  left: 60px;
+  left: 40px;
+  color: red;
 }
 .candle-2 {
-  left: 90px;
+  left: 60px;
+  color: green;
 }
 .candle-3 {
-  left: 120px;
+  left: 80px;
+  color: pink;
 }
 .candle-4 {
-  left: 150px;
+  left: 100px;
+  color: rgb(60, 60, 112);
 }
 .candle-5 {
-  left: 180px;
+  left: 130px;
+  color: red;
 }
 .candle-6 {
-  left: 210px;
+  left: 150px;
+  color: rgb(207, 210, 30);
 }
 .candle-7 {
-  left: 240px;
+  left: 170px;
+  color: cyan;
 }
 .candle-8 {
-  left: 270px;
+  left: 190px;
+  color: gold;
 }
 .candle-9 {
-  left: 30px;
+  left: 210px;
+  color: orange;
+}
+.candle-10 {
+  left: 240px;
+  color: deeppink;
+}
+.candle-11 {
+  left: 260px;
+  color: red;
+}
+.candle-12 {
+  left: 280px;
+  color: royalblue;
 }
 
 .wick {
   position: absolute;
   width: 1px;
-  height: 8px;
-  background: #000;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 5px;
+  background: #fff;
+  top: 1px;
 }
 
 .flame {
   position: absolute;
   top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 1px;
   width: 5px;
   height: 10px;
-  /* background: linear-gradient(white 20%, #ff9224 10%, #ff6a00); */
   background: red;
   border-radius: 50% 50% 20% 20%;
   filter: blur(2px);

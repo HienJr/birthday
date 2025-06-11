@@ -29,6 +29,9 @@ select {
   width: 100vw;
   perspective: 1000px;
   background: transparent;
+  /* background-image: url("../img/IMG_4149.JPG");
+  background-size: contain;
+  background-repeat: no-repeat; */
 }
 
 .btn {
@@ -200,4 +203,17 @@ canvas {
   100% {
     opacity: 1;
   }
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.img {
+  flex: 0 0;
+  height: 150px;
+  object-fit: contain;
+  /* background: transparent; */
 }

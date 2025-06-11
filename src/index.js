@@ -1,15 +1,20 @@
 import shootConfetti from "./shootConfetti.js";
 import detectBlow from "./detectBlow.js";
 import dropText from "./dropText.js";
+import sliderImage from "./sliderImage.js";
+// dropText();
 
 const checkBtn = document.querySelector(".check");
-// dropText();
 
 const playBtn = document.querySelector("#playBtn");
 const banner = document.querySelector(".banner");
 const loadIcon = document.querySelector(".load-wrapper");
 const question = document.querySelector(".question");
 const cake = document.querySelector(".cake");
+const image = document.querySelector(".image");
+
+// image.style.display = "flex";
+// sliderImage();
 
 playBtn.onclick = function () {
   banner.hidden = true;
@@ -35,16 +40,16 @@ checkBtn.onclick = function () {
     "-" +
     String(date.getMonth() + 1).padStart(2, "0") +
     "-" +
-    String(date.getDay() + 1).padStart(2, "0");
-
+    String(date.getDate()).padStart(2, "0");
   if (day.value === toDay) {
-    alert("Hãy thổi vào cổng sạc để tắt nến!!!");
+    alert("⚠️Hãy thổi vào cổng sạc để tắt nến!!!⚠️");
 
     const audio = document.querySelector("#audio");
     audio.play();
 
-    // document.body.style.transition = "background 3s";
-    // document.body.style.background = "#000";
+    image.style.display = "flex";
+    sliderImage();
+
     question.hidden = true;
     for (let i = 0; i < 10; i++) {
       shootConfetti(0, canvas.height);
