@@ -42,10 +42,10 @@ checkBtn.onclick = function () {
     "-" +
     String(date.getDate()).padStart(2, "0");
   if (day.value === toDay) {
-    alert("⚠️Hãy thổi vào cổng sạc để tắt nến!!!⚠️");
+    alert("⚠️Hãy thổi vào cổng sạc!!!⚠️");
 
     const audio = document.querySelector("#audio");
-    audio.play();
+    // audio.play();
 
     image.style.display = "flex";
     sliderImage();
