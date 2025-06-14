@@ -11,9 +11,9 @@ const banner = document.querySelector(".banner");
 const loadIcon = document.querySelector(".load-wrapper");
 const question = document.querySelector(".question");
 const cake = document.querySelector(".cake");
-const image = document.querySelector(".image");
+const image = document.querySelector(".image-wrap");
 
-// image.style.display = "flex";
+// image.hidden = false;
 // sliderImage();
 
 playBtn.onclick = function () {
@@ -47,7 +47,7 @@ checkBtn.onclick = function () {
     const audio = document.querySelector("#audio");
     // audio.play();
 
-    image.style.display = "flex";
+    image.hidden = false;
     sliderImage();
 
     question.hidden = true;

@@ -205,14 +205,22 @@ canvas {
   }
 }
 
-.image {
+.image-bot,
+.image-top {
   position: absolute;
-  bottom: 0;
+  display: flex;
   width: 100%;
+}
+
+.image-top {
+  top: 80px;
+}
+.image-bot {
+  bottom: 80px;
 }
 
 .img {
   flex: 0 0;
   height: 150px;
-  object-fit: contain;
+  object-fit: cover;
 }

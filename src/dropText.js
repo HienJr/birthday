@@ -41,6 +41,8 @@ function getRandomPosition(maxWidth, textWidth) {
   return null;
 }
 
+const usedZIndexLayers = [];
+
 function createDropText(text) {
   const p = document.createElement("p");
   p.textContent = text;

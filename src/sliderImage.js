@@ -1,49 +1,77 @@
-export default function sliderImage() {
-  const imgList = document.querySelector(".image");
-  const slides = Array.from(imgList.children);
-  const totalSlides = slides.length;
-  const items = 5; // số item hiển thị
-  let currentIndex = items;
-  const step = 1;
-  const speed = 1500;
-
-  slides.forEach((slide) => (slide.style.flexBasis = `calc(100% / ${items})`));
-
-  updatePosition(true);
-
-  for (let i = 0; i < items; i++) {
-    const cloneStart = slides[i].cloneNode(true);
-    const cloneEnd = slides[totalSlides - items + i].cloneNode(true);
-    imgList.appendChild(cloneStart); // clone đầu → cuối
-    imgList.insertBefore(cloneEnd, imgList.firstChild); // clone cuối → đầu
+class SliderImage {
+  constructor(className) {
+    this.imgList = document.querySelector(className);
+    this.originalSlides = Array.from(this.imgList.children);
+    this.originalSlidesLength = this.originalSlides.length;
+    this.slides = this.originalSlides.slice(0);
+    this.items = 5;
+    this.currentIndex = this.items;
+    this.speed = 1500;
+    this.createTrack();
+    this.updatePosition();
   }
 
-  const imgListLength = imgList.children.length;
+  createTrack() {
+    const cloneHead = this.slides
+      .slice(-this.items)
+      .map((node) => node.cloneNode(true));
+    const cloneTail = this.slides
+      .slice(0, this.items)
+      .map((node) => node.cloneNode(true));
 
-  let isAnimating;
-  setInterval(moveSlide, speed);
+    this.slides = cloneHead.concat(this.slides.concat(cloneTail));
 
-  function moveSlide() {
-    if (isAnimating) return;
-    currentIndex = Math.min(Math.max(currentIndex + step, 0), imgListLength);
-    isAnimating = true;
+    this.imgList.innerHTML = "";
+    this.slides.forEach((slide) => {
+      slide.style.flexBasis = `calc(100% / ${this.items})`;
+      this.imgList.appendChild(slide);
+    });
+  }
+
+  moveSlide(step) {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    const length = this.slides.length;
+
+    this.currentIndex = Math.min(Math.max(this.currentIndex + step, 0), length);
 
     setTimeout(() => {
-      if (currentIndex >= imgListLength - items) {
-        currentIndex = items;
-        updatePosition(true);
+      if (this.currentIndex >= length - this.items) {
+        this.currentIndex = this.items;
+        this.updatePosition(true);
+      } else if (this.currentIndex <= 0) {
+        this.currentIndex = this.originalSlidesLength;
+        this.updatePosition(true);
       }
-      isAnimating = false;
-    }, speed);
-    updatePosition(false);
+
+      this.isAnimating = false;
+    }, this.speed);
+    this.updatePosition();
   }
 
-  function updatePosition(instant = false) {
-    let offset = -(currentIndex * (100 / items));
-    imgList.style.transition = instant ? "none" : `transform ease ${speed}ms`;
-    imgList.style.transform = `translateX(${offset}%)`;
+  updatePosition(instant = false) {
+    const offset = -(this.currentIndex * (100 / this.items));
+    this.imgList.style.transition = instant
+      ? "none"
+      : `transform ease ${this.speed}ms`;
+    this.imgList.style.transform = `translateX(${offset}%)`;
+  }
+
+  autoSlide(step) {
+    setInterval(() => {
+      this.moveSlide(step);
+    }, this.speed);
   }
 }
 
-// arr:  6 7 8 [1 2 3 4 5 6 7 8] 1  2  3
-// in:   0 1 2  3 4 5 6 7 8 9 10 11 12 13
+//orig:  1 2 3 4 5 6 7 8
+// in:   0 1 2 3 4 5 6 7
+// arr:  4 5 6 7 8 [1 2 3 4 5 6 7 8] 1  2  3
+// in:   0 1 2 3 4  5 6 7 8 9 10 11 12 13
+
+export default function init() {
+  const top = new SliderImage(".image-top");
+  const bot = new SliderImage(".image-bot");
+  top.autoSlide(-1);
+  bot.autoSlide(1);
+}
