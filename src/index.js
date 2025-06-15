@@ -13,8 +13,8 @@ const question = document.querySelector(".question");
 const cake = document.querySelector(".cake");
 const image = document.querySelector(".image-wrap");
 
-// image.hidden = false;
-// sliderImage();
+image.hidden = false;
+sliderImage();
 
 playBtn.onclick = function () {
   banner.hidden = true;
@@ -25,6 +25,7 @@ playBtn.onclick = function () {
   //   question.hidden = false;
   // });
   question.hidden = false;
+  image.hidden = true;
 
   window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
@@ -46,9 +47,6 @@ checkBtn.onclick = function () {
 
     const audio = document.querySelector("#audio");
     // audio.play();
-
-    image.hidden = false;
-    sliderImage();
 
     question.hidden = true;
     for (let i = 0; i < 10; i++) {

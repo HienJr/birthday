@@ -1,12 +1,16 @@
 class SliderImage {
   constructor(className) {
     this.imgList = document.querySelector(className);
+    if (!this.imgList) {
+      throw new Error(`Element with selector "${className}" not found.`);
+    }
     this.originalSlides = Array.from(this.imgList.children);
     this.originalSlidesLength = this.originalSlides.length;
     this.slides = this.originalSlides.slice(0);
     this.items = 5;
     this.currentIndex = this.items;
     this.speed = 1500;
+    this.isAnimating = false;
     this.createTrack();
     this.updatePosition();
   }
@@ -33,7 +37,8 @@ class SliderImage {
     this.isAnimating = true;
     const length = this.slides.length;
 
-    this.currentIndex = Math.min(Math.max(this.currentIndex + step, 0), length);
+    // this.currentIndex = Math.min(Math.max(this.currentIndex + step, 0), length);
+    this.currentIndex += step;
 
     setTimeout(() => {
       if (this.currentIndex >= length - this.items) {
@@ -58,7 +63,8 @@ class SliderImage {
   }
 
   autoSlide(step) {
-    setInterval(() => {
+    if (this.intervalId) clearInterval(this.intervalId);
+    this.intervalId = setInterval(() => {
       this.moveSlide(step);
     }, this.speed);
   }
@@ -66,8 +72,8 @@ class SliderImage {
 
 //orig:  1 2 3 4 5 6 7 8
 // in:   0 1 2 3 4 5 6 7
-// arr:  4 5 6 7 8 [1 2 3 4 5 6 7 8] 1  2  3
-// in:   0 1 2 3 4  5 6 7 8 9 10 11 12 13
+// arr:  4 5 6 7 8 [1 2 3 4 5 6 7 8] 1  2   3  4   5
+// in:   0 1 2 3 4  5 6 7 8 9 10 11  12 13 14  14  15
 
 export default function init() {
   const top = new SliderImage(".image-top");

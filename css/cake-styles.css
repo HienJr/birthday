@@ -23,6 +23,20 @@
   z-index: 3;
 }
 
+.plate {
+  position: absolute;
+  background: pink;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  width: 400px;
+  height: 50px;
+  border-radius: 50%;
+  border: 10px solid white;
+  border-top: transparent;
+  z-index: 0;
+}
+
 .cream {
   position: absolute;
   top: 0;
