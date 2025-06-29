@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chữ Rơi 3D với Three.js</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Three.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/renderers/CSS3DRenderer.js"></script>
+
+    <script>
+      // Dữ liệu chữ
+      const data = [
+        "09/10/2001",
+        "Chúc mừng sinh nhật",
+        "❤️",
+        "Love You",
+        "Lê Thị Kim Tốt",
+        "Tiffany",
+        "Vui vẻ",
+        "Hạnh phúc",
+        "Nhiều tiền",
+        "May mắn",
+      ];
+
+      // Khởi tạo scene
+      const scene = new THREE.Scene();
+      const cssScene = new THREE.Scene();
+
+      const camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        1,
+        2000
+      );
+      camera.position.set(0, 0, 500);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      const cssRenderer = new THREE.CSS3DRenderer();
+      cssRenderer.setSize(window.innerWidth, window.innerHeight);
+      cssRenderer.domElement.style.position = "absolute";
+      cssRenderer.domElement.style.top = 0;
+      document.body.appendChild(cssRenderer.domElement);
+
+      // Ánh sáng
+      const light = new THREE.PointLight(0xffffff, 1);
+      light.position.set(0, 500, 500);
+      scene.add(light);
+
+      // Hiệu ứng sao băng
+      const starCount = 200;
+      const stars = [];
+      const starGeometry = new THREE.BufferGeometry();
+      const starPositions = [];
+
+      for (let i = 0; i < starCount; i++) {
+        const x = Math.random() * 2000 - 1000;
+        const y = Math.random() * 1000 - 500;
+        const z = -Math.random() * 1000;
+        starPositions.push(x, y, z);
+        stars.push({ x, y, z, speed: 0.5 + Math.random() * 1.5 });
+      }
+
+      starGeometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(starPositions, 3)
+      );
+      const starMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 2,
+      });
+      const starField = new THREE.Points(starGeometry, starMaterial);
+      scene.add(starField);
+
+      // Chữ rơi (CSS3D)
+      const texts = [];
+      const textCount = 40;
+      for (let i = 0; i < textCount; i++) {
+        const div = document.createElement("div");
+        div.className = "text";
+        div.textContent = data[Math.floor(Math.random() * data.length)];
+        div.style.fontSize = "24px";
+        div.style.color = "#fff";
+        div.style.textShadow = "0 0 4px cyan";
+        div.style.fontWeight = "bold";
+
+        const object = new THREE.CSS3DObject(div);
+        object.position.x = Math.random() * 800 - 400;
+        object.position.y = Math.random() * 600 - 300;
+        object.position.z = Math.random() * -800;
+        object.userData.speed = 1 + Math.random() * 1.5;
+
+        cssScene.add(object);
+        texts.push(object);
+      }
+
+      // Điều khiển camera bằng chuột
+      let isDragging = false,
+        prevX = 0,
+        prevY = 0;
+      let rotateX = 0,
+        rotateY = 0;
+
+      document.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        prevX = e.clientX;
+        prevY = e.clientY;
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - prevX;
+        const dy = e.clientY - prevY;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        rotateY += dx * 0.002;
+        rotateX += dy * 0.002;
+      });
+
+      // Hỗ trợ nghiêng thiết bị
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", (e) => {
+          rotateX =
+            THREE.MathUtils.degToRad(Math.max(-60, Math.min(60, e.beta - 30))) *
+            0.5;
+          rotateY =
+            THREE.MathUtils.degToRad(Math.max(-90, Math.min(90, e.gamma))) *
+            0.5;
+        });
+      }
+
+      // Animate
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Sao băng rơi
+        const pos = starGeometry.attributes.position;
+        for (let i = 0; i < starCount; i++) {
+          let index = i * 3;
+          stars[i].y -= stars[i].speed;
+          stars[i].x -= stars[i].speed * 0.3;
+          if (stars[i].y < -600) {
+            stars[i].y = 500;
+            stars[i].x = Math.random() * 2000 - 1000;
+          }
+          pos.array[index] = stars[i].x;
+          pos.array[index + 1] = stars[i].y;
+          pos.array[index + 2] = stars[i].z;
+        }
+        pos.needsUpdate = true;
+
+        // Chữ rơi
+        texts.forEach((obj) => {
+          obj.position.y -= obj.userData.speed;
+          if (obj.position.y < -400) {
+            obj.position.y = 400;
+            obj.position.x = Math.random() * 800 - 400;
+            obj.position.z = Math.random() * -800;
+          }
+        });
+
+        // Cập nhật góc camera
+        camera.rotation.x = rotateX;
+        camera.rotation.y = rotateY;
+
+        renderer.render(scene, camera);
+        cssRenderer.render(cssScene, camera);
+      }
+
+      animate();
+
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        cssRenderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
+  </body>
+</html>

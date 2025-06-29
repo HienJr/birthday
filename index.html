@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Birthday</title>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Css -->
+    <link rel="stylesheet" href="./css/styles2.css" />
+    <!-- <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/cake-decor.css" />
+    <link rel="stylesheet" href="./css/cake-styles.css" /> -->
+  </head>
+  <body>
+    <main class="main">
+      <audio
+        id="audio"
+        src="./audio/Khúc Hát Mừng Sinh Nhật [Remix] - Phan Đinh Tùng.mp3"
+      ></audio>
+      <div class="container">
+        <div class="banner">
+          <h1 class="title">Are you ready?</h1>
+          <button class="btn play-btn" id="playBtn">
+            <img src="./icon/play-solid.svg" alt="play" class="play-icon" />
+          </button>
+        </div>
+        <div class="question" hidden>
+          <p class="task">Your Birthday?</p>
+          <input type="date" name="" class="date" value="2001-10-09" />
+          <button class="check btn">Check</button>
+        </div>
+        <div class="image-wrap" hidden>
+          <div class="image-top">
+            <img src="./img/1.jpg" alt="image" class="img" /><img
+              src="./img/2.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/3.jpg" alt="image" class="img" /><img
+              src="./img/4.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/5.jpg" alt="image" class="img" />
+
+            <img src="./img/7.jpg" alt="image" class="img" /><img
+              src="./img/8.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/9.jpg" alt="image" class="img" />
+
+            <img src="./img/13.jpg" alt="image" class="img" /><img
+              src="./img/15.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/16.jpg" alt="image" class="img" /><img
+              src="./img/17.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/18.jpg" alt="image" class="img" /><img
+              src="./img/19.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/20.jpg" alt="image" class="img" /><img
+              src="./img/21.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/22.jpg" alt="image" class="img" /><img
+              src="./img/23.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/24.jpg" alt="image" class="img" /><img
+              src="./img/25.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/26.jpg" alt="image" class="img" /><img
+              src="./img/27.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/28.jpg" alt="image" class="img" /><img
+              src="./img/29.jpg"
+              alt="image"
+              class="img"
+            />
+          </div>
+          <div class="image-bot">
+            <img src="./img/1.jpg" alt="image" class="img" /><img
+              src="./img/2.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/3.jpg" alt="image" class="img" /><img
+              src="./img/4.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/5.jpg" alt="image" class="img" /><img
+              src="./img/7.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/8.jpg" alt="image" class="img" /><img
+              src="./img/9.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/12.jpg" alt="image" class="img" /><img
+              src="./img/13.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/15.jpg" alt="image" class="img" /><img
+              src="./img/16.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/17.jpg" alt="image" class="img" /><img
+              src="./img/18.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/19.jpg" alt="image" class="img" /><img
+              src="./img/20.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/21.jpg" alt="image" class="img" /><img
+              src="./img/22.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/23.jpg" alt="image" class="img" /><img
+              src="./img/24.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/25.jpg" alt="image" class="img" /><img
+              src="./img/26.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/27.jpg" alt="image" class="img" /><img
+              src="./img/28.jpg"
+              alt="image"
+              class="img"
+            /><img src="./img/29.jpg" alt="image" class="img" />
+          </div>
+        </div>
+        <div class="cake" hidden>
+          <div class="plate"></div>
+          <div class="cream"></div>
+          <div class="cake__decor decor-1"></div>
+          <div class="cake__decor decor-2"></div>
+          <div class="cake__decor decor-3"></div>
+          <div class="cake__decor decor-4"></div>
+          <div class="cake__decor decor-5"></div>
+          <div class="cake__decor decor-6"></div>
+          <div class="cake__decor decor-circle-1"></div>
+          <div class="cake__decor decor-circle-2"></div>
+          <div class="cake__decor decor-circle-3"></div>
+          <div class="cake__decor decor-circle-4"></div>
+          <div class="cake__decor decor-circle-5"></div>
+          <div class="cake__decor decor-circle-6"></div>
+          <div class="seed-decor seed-decor-1"></div>
+          <div class="seed-decor seed-decor-2"></div>
+          <div class="seed-decor seed-decor-3"></div>
+          <div class="seed-decor seed-decor-4"></div>
+          <div class="seed-decor seed-decor-5"></div>
+          <div class="seed-decor seed-decor-6"></div>
+          <div class="seed-decor seed-decor-7"></div>
+          <div class="seed-decor seed-decor-8"></div>
+          <div class="seed-decor seed-decor-9"></div>
+          <div class="seed-decor seed-decor-10"></div>
+          <div class="seed-decor seed-decor-11"></div>
+          <div class="seed-decor seed-decor-12"></div>
+          <div class="candle candle-0">
+            H
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-1">
+            A
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-2">
+            P
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-3">
+            P
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-4">
+            Y
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-5">
+            B
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-6">
+            I
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-7">
+            R
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-8">
+            T
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-9">
+            H
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-10">
+            D
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-11">
+            A
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+          <div class="candle candle-12">
+            Y
+            <div class="wick">
+              <div class="flame"></div>
+            </div>
+          </div>
+        </div>
+        <div class="star-background"></div>
+        <canvas id="canvas"></canvas>
+      </div>
+    </main>
+
+    <!-- <script type="module" src="./src/index.js"></script> -->
+    <script type="module" src="./src/start.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
