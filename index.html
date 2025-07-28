@@ -8,15 +8,27 @@
     />
     <title>Birthday</title>
     <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
       rel="stylesheet"
     />
     <!-- Css -->
-    <link rel="stylesheet" href="styles2.min.css" />
+    <!-- <link rel="stylesheet" href="styles2.min.css" /> -->
+    <link
+      rel="stylesheet"
+      href="./css/styles2.css"
+    />
   </head>
+
   <body>
     <main class="main">
       <audio
@@ -26,16 +38,31 @@
       <div class="container">
         <div class="banner">
           <h1 class="title">Are you ready?</h1>
-          <button class="btn play-btn" id="playBtn">
-            <img src="./icon/play-solid.svg" alt="play" class="play-icon" />
+          <button
+            class="btn play-btn"
+            id="playBtn"
+          >
+            <img
+              src="./icon/play-solid.svg"
+              alt="play"
+              class="play-icon"
+            />
           </button>
         </div>
-        <div class="question" hidden>
+        <div
+          class="question"
+          hidden
+        >
           <p class="task">Your Birthday?</p>
-          <input type="date" name="" class="date" value="2001-10-09" />
+          <input
+            type="date"
+            name=""
+            class="date"
+            value="2001-10-09"
+          />
           <button class="check btn">Check</button>
         </div>
-        <div class="image-wrap" hidden>
+        <!-- <div class="image-wrap" hidden>
           <div class="image-top">
             <img src="./img/1.jpg" alt="image" class="img" /><img
               src="./img/2.jpg"
@@ -138,8 +165,69 @@
               class="img"
             /><img src="./img/29.jpg" alt="image" class="img" />
           </div>
+        </div> -->
+        <div class="image-wrap">
+          <!-- <button class="test-left">PRE</button>
+          <button class="test-right">NEXT</button> -->
+          <div class="image-bot">
+            <div class="image image-1"></div>
+            <div class="image image-2"></div>
+            <div class="image image-3"></div>
+            <div class="image image-4"></div>
+            <div class="image image-5"></div>
+            <div class="image image-6"></div>
+            <div class="image image-7"></div>
+            <div class="image image-8"></div>
+            <div class="image image-9"></div>
+            <div class="image image-10"></div>
+            <div class="image image-11"></div>
+            <div class="image image-12"></div>
+            <div class="image image-13"></div>
+            <div class="image image-14"></div>
+            <div class="image image-15"></div>
+            <div class="image image-16"></div>
+            <div class="image image-17"></div>
+            <div class="image image-18"></div>
+            <div class="image image-19"></div>
+            <div class="image image-20"></div>
+            <div class="image image-21"></div>
+            <div class="image image-22"></div>
+            <div class="image image-23"></div>
+            <div class="image image-24"></div>
+            <div class="image image-25"></div>
+          </div>
+          <div class="image-top">
+            <div class="image image-1"></div>
+            <div class="image image-2"></div>
+            <div class="image image-3"></div>
+            <div class="image image-4"></div>
+            <div class="image image-5"></div>
+            <div class="image image-6"></div>
+            <div class="image image-7"></div>
+            <div class="image image-8"></div>
+            <div class="image image-9"></div>
+            <div class="image image-10"></div>
+            <div class="image image-11"></div>
+            <div class="image image-12"></div>
+            <div class="image image-13"></div>
+            <div class="image image-14"></div>
+            <div class="image image-15"></div>
+            <div class="image image-16"></div>
+            <div class="image image-17"></div>
+            <div class="image image-18"></div>
+            <div class="image image-19"></div>
+            <div class="image image-20"></div>
+            <div class="image image-21"></div>
+            <div class="image image-22"></div>
+            <div class="image image-23"></div>
+            <div class="image image-24"></div>
+            <div class="image image-25"></div>
+          </div>
         </div>
-        <div class="cake" hidden>
+        <div
+          class="cake"
+          hidden
+        >
           <div class="plate"></div>
           <div class="cream"></div>
           <div class="cake__decor decor-1"></div>
@@ -250,8 +338,11 @@
       </div>
     </main>
 
-    <script type="module" src="start.min.js"></script>
-    <!-- <script type="module" src="./src/start.js"></script> -->
+    <!-- <script type="module" src="start.min.js"></script> -->
+    <script
+      type="module"
+      src="./src/start.js"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
